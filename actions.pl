@@ -1,8 +1,23 @@
+% Operators
 :- op(900, xfx, [is_a, does, has]).
 
+% Dynamic rules
 :- dynamic is_a/2.
 :- dynamic does/2.
 :- dynamic has/2.
+
+% Basic relation structure
+object has attribute.
+object has object.
+
+object does action.
+attibute does action.
+
+action has consequence.
+
+consquence is_a type.
+consquence has attribute.
+consquence has object.
 
 :-[simple_base].
 
@@ -20,7 +35,6 @@ what_happens(A, B, C) :-
     has(B, C), (C is_a consequence).
 
 % object/attribute A does action B, and the consequence of B has effect
-%% TODO: GENERIC ACTION
 do(A, B) :-
     what_happens(A, B, C),
         % if it is a bad consequence, removes the attribute from A
@@ -34,8 +48,11 @@ add_to(A, B) :- asserta(has(A, B)).
 % Desicibres the object/action/attribute/consequence A.
 describe(A, X) :- (A has X); (A is_a X); (A does X).
 
-pen does write.
-write is_a action.
+% Register a action A that takes B
+generic_action(A, B) :- Op=..[A, B], asserta(Op).
+
+% Executes a action A that takes B
+do_generic_action(A, B) :- callable(A), Op=..[A, B], Op.
 
 main :- knife has A,
         write(A).
