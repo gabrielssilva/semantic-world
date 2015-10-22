@@ -16,10 +16,6 @@ create_a_rule(L) :-
     assert(Head :- Body),
     listing(Head).
 
-%% TODO: REFLECT RELATIONS
-% If bob has a pen, and a pen writes, bob can write
-% reflect_relations(A, B) :-
-
 
 % Defines a list of facts, asserts all of them, and creates a new rule dynamically
 main :-

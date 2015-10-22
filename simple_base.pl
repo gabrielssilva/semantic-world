@@ -5,6 +5,9 @@ object has attribute.
 attibute does action.
 object does action.
 
+bob is_a object.
+bob has pen.
+
 pen is_a object.
 point is_a attribute.
 ink is_a attribute.
