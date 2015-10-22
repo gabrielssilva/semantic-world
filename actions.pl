@@ -20,6 +20,7 @@ what_happens(A, B, C) :-
     has(B, C), (C is_a consequence).
 
 % object/attribute A does action B, and the consequence of B has effect
+%% TODO: GENERIC ACTION
 do(A, B) :-
     what_happens(A, B, C),
         % if it is a bad consequence, removes the attribute from A
@@ -31,7 +32,7 @@ remove_from(A, B) :- retract(has(A, B)).
 add_to(A, B) :- asserta(has(A, B)).
 
 % Desicibres the object/action/attribute/consequence A.
-describe(A, B, C, D) :- (A has B), (A is_a C), (A does D).
+describe(A, X) :- (A has X); (A is_a X); (A does X).
 
 pen does write.
 write is_a action.

@@ -1,3 +1,6 @@
+% object does action, which_results_on addition/remotion attribute/object
+%% object does action on object, which_results_on addition/remotion attribute/object
+
 object has attribute.
 attibute does action.
 object does action.
