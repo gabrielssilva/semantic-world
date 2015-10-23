@@ -19,7 +19,7 @@ consquence is_a type.
 consquence has attribute.
 consquence has object.
 
-:-[simple_base].
+% :-[simple_base].
 
 % why object A does action B, because of attribute/object C
 why(A, B, C) :- (B is_a action), (((A has C), (C does B)); (A does B)), (A is_a object).

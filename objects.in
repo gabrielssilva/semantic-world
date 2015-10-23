@@ -1,3 +1,18 @@
+bob is_a object
+bob has pen.
+
 pen is_a object
+pen has point.
+pen has ink.
+
+pencil is_a object
+pencil has point.
+
+point is_a attribute.
+ink is_a attribute.
+blade is_a attribute.
+
 knife is_a object
-mug is_a object
+knife has blade.
+
+hammer is_a object
