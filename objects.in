@@ -1,3 +1,3 @@
-pen is_a object
-knife is_a object
-mug is_a object
+F bob has pen
+F pen has ink
+F pen writes which results on remotion of ink
