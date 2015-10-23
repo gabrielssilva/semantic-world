@@ -1,11 +1,13 @@
 % Operators
 :- op(900, xfx, [is_a, does, has, affects]).
 
+
 % Dynamic rules
 :- dynamic is_a/2.
 :- dynamic does/2.
 :- dynamic has/2.
 :- dynamic affects/2.
+
 
 % Basic relation structure
 object has object.
@@ -15,13 +17,14 @@ object does action.
 action is_a type.
 action affects object.
 
-% :-[simple_base].
 
 % why object A does action B, because of object C
 why(A, B, C) :- (B is_a action), (((A has C), (C does B)); (A does B)), (A is_a object).
 
+
 % get a object A that does action B
 get(A, B) :- why(A, B, _).
+
 
 % what happens if the object A do action B, the consquence C
 what_happens(A, B, C) :-
@@ -29,6 +32,7 @@ what_happens(A, B, C) :-
     get(A, B),
     % cheks if B has a consquence C
     has(B, C), (C is_a consequence).
+
 
 % object A does action B, and the consequence of B has effect
 do(A, B) :-
@@ -42,8 +46,10 @@ do(A, B) :-
 remove_from(A, B) :- retract(A has B).
 add_to(A, B) :- asserta(A has B).
 
+
 % Desicibres the object/action/consequence A.
 describe(A, X) :- (A has X); (A is_a X); (A does X); (A affects X).
+
 
 % Creations
 create_object(A) :- delete_generic(A, is_a, object), asserta(A is_a object).
@@ -72,6 +78,3 @@ delete_generic(A, Op, B).
 
 % Register a action A that takes B
 generic_action(A, B) :- Op=..[A, B], asserta(Op).
-
-% Executes a action A that takes B
-do_generic_action(A, B) :- callable(A), Op=..[A, B], Op.
